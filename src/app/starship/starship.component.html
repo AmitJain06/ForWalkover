@@ -1,0 +1,64 @@
+<div class="row">
+    <div class="col-sm-12">
+        <div style="border: solid 1px black; padding: 20px;">
+            <h3>star-ship compnent</h3>
+          
+            <button (click)="openList()">List</button>
+            <button (click)="openListByID()">List By ID</button>
+
+            <div *ngIf="showTab == 1">
+                <table class="table-striped">
+                    <tr *ngFor="let starship of starshipList; let i = index">
+                        <td>{{i+ 1}}</td>
+                        <td>{{starship.name}}</td>
+                    </tr>
+                </table>
+            </div>
+
+
+            <div *ngIf="showTab == 2">
+                <br>
+                <select name="Select name" [(ngModel)]="selectedStarshipName" (ngModelChange)="openDetail($event)"> 
+            <option value="">Select </option>
+            <option *ngFor="let n of starshipList" [attr.value]="n.name">{{n.name}}</option>
+            
+        </select>
+
+                <br>
+                <div *ngIf="selectedStarship">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label>Name : </label>
+                        </div>
+                        <div class="col-sm-3">
+                            {{selectedStarship.name}}
+                        </div>
+                        <div class="col-sm-3">
+                            <label>length : </label>
+                        </div>
+                        <div class="col-sm-3">
+                            {{selectedStarship.length}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label>manufacturer : </label>
+                        </div>
+                        <div class="col-sm-3">
+                            {{selectedStarship.manufacturer}}
+                        </div>
+                        <div class="col-sm-3">
+                            <label>passengers : </label>
+                        </div>
+                        <div class="col-sm-3">
+                            {{selectedStarship.passengers}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
